@@ -1,0 +1,183 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ssl | meroykang</title>
+<link rel="shortcut icon" href="https://meroykang.github.io/favicon.ico?v=1669386424492">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://meroykang.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="ssl | meroykang - Atom Feed" href="https://meroykang.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="SSL简介
+SSL和TLS：
+SSL (Secure Sockets Layer）安全套接层。是由Netscape公司于1990年开发，用于保障Word Wide Web（WWW）通讯的安全。主要任务是提供私密性，信息完整性和身份认证。19..." />
+    <meta name="keywords" content="网络安全" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://meroykang.github.io">
+  <img class="avatar" src="https://meroykang.github.io/images/avatar.png?v=1669386424492" alt="">
+  </a>
+  <h1 class="site-title">
+    meroykang
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://github.com/meroyk/meroykang.github.io/tags" class="menu" target="_blank">
+          网络安全
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              ssl
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-11-24
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://meroykang.github.io/tag/y79N9ADtv/" class="post-tag">
+                  # 网络安全
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://meroykang.github.io/post-images/ssl.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p>SSL简介<br>
+SSL和TLS：<br>
+SSL (Secure Sockets Layer）安全套接层。是由Netscape公司于1990年开发，用于保障Word Wide Web（WWW）通讯的安全。主要任务是提供私密性，信息完整性和身份认证。1994年改版为SSLv2,1995年改版为SSLv3.</p>
+<p>TLS(Transport Layer Security）安全传输层协议,）用于在两个通信应用程序之间提供保密性和数据完整性。该标准协议是由IETF于1999年颁布，整体来说TLS非常类似SSLv3，只是对SSLv3做了些增加和修改。</p>
+<p>SSL协议介绍：<br>
+SSL是一个不依赖于平台和运用程序的协议，位于TCP/IP协议与各种应用层协议之间，为数据通信提高安全支持。</p>
+<p>图：SSL在协议层中的位置<br>
+SSL加密知名协议：<br>
+HTTP over SSL:</p>
+<p>简写https，加密网页浏览是设计SSL的初衷，HTTP也是第一个使用SSL保障安全的应用层协议。</p>
+<p>​ 当Netscape在它的Navigator里面运用HTTP over SSL的时候，使用https://来标识HTTP over SSL，因此我常见的https的全称就是HTTP over SSL。后来HTTPS在RFC2818被标准化。HTTPS工作在443端口，而HTTP默认工作在80端口。</p>
+<p>Email over SSL：</p>
+<p>类似于HTTP over SSL，邮件协议例如：</p>
+<p>SMTP，POP3、IMAP也能支持SSL。<br>
+SMTP over TLS的标准文档在RFC2487<br>
+POP3和IMAP over TLS的标准化文档在RFC2595.<br>
+SSL原理详解<br>
+————————————————<br>
+版权声明：本文为CSDN博主「曹世宏的博客」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>
+原文链接：https://blog.csdn.net/qq_38265137/article/details/90112705</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://meroykang.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

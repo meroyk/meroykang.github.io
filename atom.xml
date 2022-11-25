@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://meroykang.github.io</id>
+    <title>meroykang</title>
+    <updated>2022-11-25T14:27:06.777Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://meroykang.github.io"/>
+    <link rel="self" href="https://meroykang.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://meroykang.github.io/images/avatar.png</logo>
+    <icon>https://meroykang.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2022, meroykang</rights>
+    <entry>
+        <title type="html"><![CDATA[SSL-1]]></title>
+        <id>https://meroykang.github.io/post/ssl-1/</id>
+        <link href="https://meroykang.github.io/post/ssl-1/">
+        </link>
+        <updated>2022-11-25T01:19:17.000Z</updated>
+        <content type="html"><![CDATA[<p>ecure Sockets Layer<br>
+SSL协议概述<br>
+SSL解决的问题（功能）<br>
+协议的使用<br>
+SSL在协议栈的位置<br>
+SSL协议的分层模型<br>
+SSL体系结构<br>
+SSL的两个重要概念<br>
+主要工作流程<br>
+SSL握手协议的握手过程<br>
+SSL记录层的功能<br>
+SSL协议脆弱性分析<br>
+SSL协议概述<br>
+Secure Sockets Layer 安全套接字协议</p>
+<p>鉴于SSL协议的脆弱性 升级出了它的爸爸TSL 所以Wrieshark抓不出SSL以前的数据包</p>
+<p>TLS(Transport Layer Security)是更为安全的升级版 SSL。</p>
+<p>SSL协议可用于保护正常运行于TCP之上的任何应用协议，如HTTP、FTP、SMTP或Telnet的通信，最常见的是用SSL来保护HTTP的通信。</p>
+<p>SSL协议的优点在于它是与应用层协议无关的。高层的应用协议（如HTTP、FTP、Telnet等）能透明地建立于SSL协议之上。</p>
+<p>SSL协议在应用层协议之前就已经完成加密算法、通信密钥的协商以及服务器的认证工作。在此之后应用层协议所传送的数据都会被加密，从而保证通信的安全性。</p>
+<p>SSL解决的问题（功能）<br>
+客户对服务器的身份认证<br>
+SSL服务器允许客户的浏览器使用标准的公钥加密技术和一些可靠的认证中心（CA）的证书，来确认服务器的合法性。</p>
+<p>服务器对客户的身份认证<br>
+也可通过公钥技术和证书进行认证，也可通过用户名，password来认证。</p>
+<p>建立服务器与客户之间安全的数据通道<br>
+SSL要求客户与服务器之间的所有发送的数据都被发送端加密、接收端解密，同时还检查数据的完整性</p>
+<p>协议的使用<br>
+https://</p>
+<p>SSL在协议栈的位置</p>
+<p>SSL协议的分层模型<br>
+SSL协议是一个分层的协议，共有两层组成。处于SSL协议的底层的是SSL记录层协议(SSL Record Protocol)，它位于可靠的传输层协议(如TCP)之上，用于封装高层协议的数据。其中SSL握手协议(SSL Handshake Protocol)允许服务方和客户方互相认证，并在应用层协议传送数据之前协商出一个加密算法和会话密钥。</p>
+<p>SSL体系结构</p>
+<p>SSL的两个重要概念<br>
+SSL连接（connection)<br>
+一个连接是一个提供一种合适类型服务的传输（OSI分层的定义）。<br>
+SSL的连接是点对点的关系。<br>
+连接是暂时的，每一个连接和一个会话关联。</p>
+<p>SSL会话（session）<br>
+一个SSL会话是在客户与服务器之间的一个关联。会话由Handshake Protocol创建。会话定义了一组可供多个连接共享的密码安全参数。<br>
+会话用以避免为每一个连接提供新的安全参数所需昂贵的协商代价。</p>
+<p>主要工作流程<br>
+1.网络连接建立，SSL客户端发送消息，消息中包含SSL版本号、密码设置、可实现的算法列表、随机数以及服务器使用SSL协议通信所需的其它信息；<br>
+2.SSL服务器端回应消息，确定SSL版本号、加密算法和压缩算法；<br>
+3.SSL服务器发出服务器数字证书；<br>
+4.SSL客户端的身份认证是可选的；<br>
+5.客户端生成预主密钥pre_master_secret，用服务器的公钥加密后返回服务器，服务器利用自己的私钥解密后得到会话密钥；<br>
+5. 若服务器要求客户认证，客户机会向服务器随加密的pre_master_secret一起发送签名的数据和客户自己的证书。<br>
+7. 服务器若认证客户成功，使用私钥加密pre_master_secret，然后执行一系列步骤生成master secret。否则会话终止。<br>
+8. 客户机与服务器使用master secret生成会话密钥。该密钥是对称密钥，用于加密和解密在SSL会话期间交换的信息，检验信息完整性。<br>
+9. CS：发送消息通知以后从客户机来的消息将用会话密钥加密。客户机然后发送一条独立的（加密的）消息表明握手的客户机部分已经完成。</p>
+<p>应用数据的传输过程为 :<br>
+１)应用程序把应用数据提交给本地的SSL；<br>
+２)发送端的SSL根据需要 ：<br>
+a)使用指定的压缩算法 ，压缩应用数据；<br>
+b)使用散列算法对压缩后的数据计算散列值；<br>
+c)把散列值和压缩数据一起用加密算法加密；<br>
+3) 密文通过网络传给对方；<br>
+4)接收方的SSL<br>
+用相同的加密算法对密文解密 ，得到明文；<br>
+用相同的散列算法对明文中的应用数据散列；<br>
+计算得到的散列值与明文中的散列值比较；<br>
+5）如果一致 ,则明文有效 ,接收方的SSL把明文解压后得到应用数据上交给应用层。否则就丢弃数据，并向发方发出告警信息。严重的错误有可能引起再次的协商或连接中断。</p>
+<p>SSL握手协议的握手过程<br>
+无客户端认证的全握手过程</p>
+<p>有客户端认证的全握手过程</p>
+<p>会话恢复过程</p>
+<p>SSL记录层的功能<br>
+保护传输数据的私密性，对数据进行加密和解密<br>
+验证传输数据的完整性，计算报文的摘要<br>
+提高传输数据的效率，对报文进行压缩<br>
+保证数据传输的可靠和有序<br>
+报文格式</p>
+<p>SSL协议脆弱性分析<br>
+客户端假冒</p>
+<p>因为SSL协议设计初衷是对Web站点及网上交易进行安全性保护，使消费者明白正在和谁进行交易要比使商家知道谁正在付费更为重要，为了不致于由于安全协议的使用而导致网络性能大幅下降， SSL协议并不是默认地要求进行客户鉴别，这样做虽然有悖于安全策略，但却促进了SSL的广泛应用。</p>
+<p>针对这个问题，可在必要的时候配置SSL协议，使其选择对客户端进行认证鉴别。</p>
+<p>无法保护UDP应用</p>
+<p>SSL协议需要在握手之前建立TCP连接，因此不能对UDP应用进行保护。如果要兼顾UDP协议层之上的安全保护，可以采用IP层的安全解决方案。<br>
+SSL协议不能对抗流量分析</p>
+<p>由于SSL只对应用数据进行保护，数据包的IP头和TCP头仍然暴露在外，通过检查没有加密的IP源和目的地址以及TCP端口号或者检查通信数据量，一个通信分析者依然可以揭示哪一方在使用什么服务，有时甚至揭露商业或私人关系的秘密。<br>
+进程中主密钥泄漏</p>
+<p>除非SSL的工程实现大部分驻留在硬件中，否则主密钥将会存留在主机的主存储器中，这就意味着任何可以读取SSL进程存储空间的攻击者都能读取主密钥，因此，不可能面对掌握机器管理特权的攻击者而保护SSL连接，这个问题要依靠用户管理策略来解决。<br>
+————————————————<br>
+版权声明：本文为CSDN博主「李白你好」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>
+原文链接：https://blog.csdn.net/weixin_44309905/article/details/116453443</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello Gridea]]></title>
+        <id>https://meroykang.github.io/post/hello-gridea/</id>
+        <link href="https://meroykang.github.io/post/hello-gridea/">
+        </link>
+        <updated>2018-12-11T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+<!-- more -->
+<p><a href="https://github.com/getgridea/gridea">Github</a><br>
+<a href="https://gridea.dev/">Gridea 主页</a><br>
+<a href="https://fehey.com/">示例网站</a></p>
+<h2 id="特性">特性👇</h2>
+<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
+<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
+<p>🏷️  你可以对文章进行标签分组</p>
+<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
+<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
+<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
+<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
+<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
+<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
+<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
+<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
+<p>未来，它一定会成为你离不开的伙伴</p>
+<p>尽情发挥你的才华吧！</p>
+<p>😘 Enjoy~</p>
+]]></content>
+    </entry>
+</feed>
